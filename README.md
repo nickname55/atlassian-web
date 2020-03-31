@@ -136,7 +136,7 @@ Webpack также прдлагает ряд инструментов
 мы замечаем, что используем еще несколько инструментов:
 
 
-'''
+```
 "dependencies": {
   "babel-polyfill": "^6.7.4",
   "isomorphic-fetch": "^2.2.1",
@@ -164,7 +164,7 @@ Webpack также прдлагает ряд инструментов
   //other dependencies not shown for brevity
 }
 
-'''
+```
 
 
 В частности мы используем:
@@ -197,12 +197,12 @@ Sinon - популярный фреймворк для JavaScript,
 Конфигурация .babelrc очень проста:
 
 
-'''
+```
 {
     "presets": ["react", "es2015"],
     "plugins": ["transform-object-rest-spread"]
 }
-'''
+```
 
 Он сообщает Babel, что мы используем React и ES6
 и что мы также хотим использовать новый ES7 spread operator.
@@ -219,7 +219,7 @@ Sinon - популярный фреймворк для JavaScript,
 Этот файл содержит ряд скриптов для упаковки приложения,
 для последующего включения его в JIRA:
 
-'''
+```
 "scripts": {
   "clean": "rm -rf node_modules/ lib/* npm-debug.log",
   "dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.dev.standalone.js",
@@ -229,7 +229,7 @@ Sinon - популярный фреймворк для JavaScript,
   "prod-jira": "./node_modules/.bin/webpack --config webpack.config.prod.jira.js"
 },
 
-'''
+```
 
 Важным сценарием для разработки является скрипт dev-jira.
 чтобы начать разработку плагина NPS,
@@ -251,7 +251,7 @@ npm run dev-jira.
 
 
 
-'''
+```
 require('webpack');
 const path = require('path');
 module.exports = {
@@ -282,7 +282,7 @@ module.exports = {
   },
 };
 
-'''
+```
 
 Здесь происходит много вещей:
 - Мы определяем три точки входа:
@@ -300,10 +300,11 @@ module.exports = {
 Как мы можем подключить это к atlassian-plugin.xml?
 Просто:
 
-
+```
 <web-resource key="nps-survey-embeddable-pack">
     <resource location="/client/npssurvey.pack.js" name="npssurvey.js" type="download"/>
 </web-resource>
+```
 
 Webpack собирает наш внешний JavaScript 
 в папку src/main/resources/client 
@@ -341,8 +342,7 @@ Maven необходим для компиляции
 maven-exec-plugin definition для build -> pluginx
 в Maven файле pom.xml :
 
-'''
-
+```
 <plugin>
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>exec-maven-plugin</artifactId>
@@ -400,9 +400,7 @@ maven-exec-plugin definition для build -> pluginx
         </execution>
     </executions>
 </plugin>
-
-
-'''
+```
 
 Это делает несколько вещей:
 Когда сборка Maven инициализируется,
@@ -468,7 +466,3 @@ https://blog.developer.atlassian.com/wp-content/uploads/dac-import/nps-config-st
 и как мы применяем Redux
 к более сложным частям нашего приложения!
 Спасибо за чтение!
-
-
-
-
