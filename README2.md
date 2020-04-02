@@ -73,7 +73,7 @@ https://blog.developer.atlassian.com/wp-content/uploads/dac-import/nps-reports.p
 Кажется что это довольно сложно,
 но на самом деле это не так.
 
-'''
+```
 
 //imports excluded for brevity
 const ReportsPage = (props) => (
@@ -113,7 +113,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps)(ReportsPage);
 
-'''
+```
 
 Даже для тех, кто не знаком с кодом,
 довольно легко понять,
@@ -154,7 +154,7 @@ HTML часть это на самом деле React JSX,
 работает чтобы нарисовать пончиковую диаграмму:
 
 
-'''
+```
 
 //imports excluded for brevity
 class NPSDoughnutChart extends Component {
@@ -206,7 +206,7 @@ NPSDoughnutChart.propTypes = {
 export default NPSDoughnutChart;
 
 
-'''
+```
 
 Давайте сначала посмотрим на функцию render():
 
@@ -260,7 +260,7 @@ React вызовет componentDidMount(),
 ответы от сервера.
 
 
-'''
+```
 //imports excluded for brevity
 
 const sampleResponse = {
@@ -305,7 +305,7 @@ describe('Over time Report', () => {
   });
 });
 
-'''
+```
 В связи с асинхронной природой вызова REST,
 нам нужно использовать Promises,
 которые разрешаются самим компонентом
@@ -330,17 +330,17 @@ describe('Over time Report', () => {
 и первой статьи данной серии статей,
 мы видим что нам нужен этот модуль: test-setup
 
-'''
+```
 "test": "./node_modules/.bin/mocha --compilers js:babel-core/register "./src/**/*test.js" --colors --require test-setup",
 
-'''
+```
 
 
 Этот модуль просто содержит настройки для jsdom,
 и мы также настраиваем наши polyfills:
 
 
-'''
+```
 
 var jsdom = require('jsdom').jsdom;
 
@@ -351,7 +351,7 @@ global.navigator = global.window.navigator;
 require('babel-polyfill');
 require('isomorphic-fetch');
 
-'''
+```
 
 Теперь вы можете запускать тесты из командной строки
 с помощью команды 'npm run test'
@@ -378,13 +378,13 @@ JIRA уже проделывает большую тяжелую работу
 в нашей web-pack конфигурации (смотрите первую статью из серии,
 чтобы увидеть полный конфиг):
 
-'''
+```
 
 externals: {
   i18nStrings: 'require("jira/nps/i18n")',
 },
 
-'''
+```
 
 Для этого требуется модуль, определенный 
 стандартным JIRA web-resource
@@ -392,7 +392,7 @@ externals: {
 
 Содержимое этого модуля:
 
-'''
+```
 define("jira/nps/i18n", function () {
     var i18nPrefixes = $i18nPrefixes("survey.plugin");
     return extend(i18nPrefixes, {
@@ -402,7 +402,7 @@ define("jira/nps/i18n", function () {
     });
 });
 
-'''
+```
 
 $$i18nPrefixes - это специальная функция,
 которая на самом деле преобразуется
@@ -420,7 +420,7 @@ $$i18nPrefixes - это специальная функция,
 Затем, наконец, мы предоставляем модуль i18n
 для всех наших компонентов React для импорта:
 
-'''
+```
 
 import I18nHelper from './i18nHelper';
 
@@ -437,7 +437,7 @@ try {
 const i18n = new I18nHelper(i18nStrings);
 
 export default i18n;
-'''
+```
 
 Импортируемый нами I18Helper предоставляет тот же API интерфейс
 getText(key, args)
@@ -492,7 +492,7 @@ https://blog.developer.atlassian.com/wp-content/uploads/dac-import/config-form.p
 который отображает эту страницу:
 
 
-'''
+```
 //imports excluded for brevity
 const NPSAdmin = (props) => {
   if (props.deleteSurvey.deleted) {
@@ -536,7 +536,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(NPSAdmin);
 
-'''
+```
 
 Это тупая функция без состояния (dumb stateless function)
 Это позволяет очень легко проводить модульное тестирование:
@@ -563,7 +563,7 @@ mapDispatchToProps будет отправлять соответствующи�
 Давайте кратко рассмотрим,
 как выглядит действие сохранения (save action):
 
-'''
+```
 //...other actions excluded for brevity
 export const SURVEY_SAVE_ERRORS = 'SURVEY_SAVE_ERRORS';
 export function surveySaveErrors(ex) {
@@ -600,7 +600,7 @@ export function saveSurvey(context, newSurvey) {
       dispatch(surveySaveErrors(ex));
     });
 }
-'''
+```
 
 Теперь мы обрабатываем вызовы на сервере
 и отправляем новые actions в зависимости от результата.
@@ -617,7 +617,7 @@ NPSAdmin, предав различные props.
 dispatched (отправленные) в реальном магазине Redux:
 
 
-'''
+```
 
 //imports excluded for brevity
 function renderAdmin() {
@@ -659,7 +659,7 @@ describe('NPS Admin', () => {
   });
 });
 
-'''
+```
 
 Это гораздо лучший тест, чем тот, который мы видели ранее
 с компонентом NPS Donut.
