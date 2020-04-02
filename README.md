@@ -93,7 +93,7 @@ JSON возвращаемый этим апи должен быть станда
 
 Чтобы отделить все наши компоненты пользовательского
 интерфейся от JIRA,
-на нужна новая структура каталогов:
+нам нужна новая структура каталогов:
 
 https://blog.developer.atlassian.com/wp-content/uploads/dac-import/nps-folder-structure.png
 
